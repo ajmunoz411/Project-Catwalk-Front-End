@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const axios = require('axios');
 const config = require('../config');
 
@@ -22,7 +23,6 @@ const atelier = {
   },
 
   getQuestions: (req, res) => {
-    const { product_id } = req.params;
     const options = {
       method: 'get',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/qa/questions/?product_id=16060&count=100',
@@ -30,6 +30,7 @@ const atelier = {
         Authorization: `${config.TOKEN}`,
       },
     };
+
     axios(options)
       .then((response) => {
         res.status(200).send(response.data);
@@ -41,14 +42,15 @@ const atelier = {
 
   getReviews: (req, res) => {
     const { id, count, sort } = req.params;
+
     const options = {
       method: 'get',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews?product_id=${id}&count=${count}&sort=${sort}`,
-
       headers: {
         Authorization: `${config.TOKEN}`,
       },
     };
+
     axios(options)
       .then((response) => {
         res.status(200).send(response.data);
@@ -61,14 +63,15 @@ const atelier = {
 
   updateHelpfulReview: (req, res) => {
     const { id } = req.params;
+
     const options = {
       method: 'put',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/${id}/helpful`,
-
       headers: {
         Authorization: `${config.TOKEN}`,
       },
     };
+
     axios(options)
       .then((response) => {
         res.status(200).send(response.data);
@@ -81,14 +84,15 @@ const atelier = {
 
   reportReview: (req, res) => {
     const { id } = req.params;
+
     const options = {
       method: 'put',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/${id}/report`,
-
       headers: {
         Authorization: `${config.TOKEN}`,
       },
     };
+
     axios(options)
       .then(() => {
         res.status(200).send('successful report');
@@ -98,6 +102,7 @@ const atelier = {
         res.status(400).send(err);
       });
   },
+
   postReview: (req, res) => {
     const options = {
       method: 'post',
@@ -107,6 +112,7 @@ const atelier = {
         Authorization: `${config.TOKEN}`,
       },
     };
+
     axios(options)
       .then(() => {
         res.status(200).send('Successful post!!!');
@@ -157,6 +163,7 @@ const atelier = {
 
   getRelatedItems: (req, res) => {
     const { id } = req.params;
+
     const options = {
       method: 'get',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/${id}/related`,
@@ -176,6 +183,7 @@ const atelier = {
 
   getOneProduct: (req, res) => {
     const { id } = req.params;
+
     const options = {
       method: 'get',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/${id}`,
@@ -195,9 +203,9 @@ const atelier = {
 
   getAnswersByQuestionId: (req, res) => {
     const { question_id } = req.params;
+
     const options = {
       method: 'get',
-      // eslint-disable-next-line camelcase
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/qa/questions/${question_id}/answers`,
       headers: {
         Authorization: `${config.TOKEN}`,
@@ -215,9 +223,9 @@ const atelier = {
 
   updateHelpfulAnswer: (req, res) => {
     const { answer_id } = req.params;
+
     const options = {
       method: 'put',
-      // eslint-disable-next-line camelcase
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/qa/answers/${answer_id}/helpful`,
       headers: {
         Authorization: `${config.TOKEN}`,
@@ -235,9 +243,9 @@ const atelier = {
 
   reportAnswers: (req, res) => {
     const { answer_id } = req.params;
+
     const options = {
       method: 'put',
-      // eslint-disable-next-line camelcase
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/qa/answers/${answer_id}/report`,
       headers: {
         Authorization: `${config.TOKEN}`,
@@ -255,9 +263,9 @@ const atelier = {
 
   updateHelpfulQuestion: (req, res) => {
     const { question_id } = req.params;
+
     const options = {
       method: 'put',
-      // eslint-disable-next-line camelcase
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/qa/questions/${question_id}/helpful`,
       headers: {
         Authorization: `${config.TOKEN}`,
@@ -278,9 +286,9 @@ const atelier = {
     const {
       body, name, email, photos,
     } = req.body;
+
     const options = {
       method: 'post',
-      // eslint-disable-next-line camelcase
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/qa/questions/${question_id}/answers`,
       data: {
         body,
@@ -303,11 +311,13 @@ const atelier = {
   },
 
   postQuestion: (req, res) => {
-    const { body, name, email, product_id } = req.body;
+    const {
+      body, name, email, product_id,
+    } = req.body;
+
     const options = {
       method: 'post',
-      // eslint-disable-next-line camelcase
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/qa/questions/`,
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/qa/questions/',
       data: {
         body,
         name,
@@ -330,9 +340,9 @@ const atelier = {
 
   reportQuestion: (req, res) => {
     const { question_id } = req.params;
+
     const options = {
       method: 'put',
-      // eslint-disable-next-line camelcase
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/qa/questions/${question_id}/report`,
       headers: {
         Authorization: `${config.TOKEN}`,
