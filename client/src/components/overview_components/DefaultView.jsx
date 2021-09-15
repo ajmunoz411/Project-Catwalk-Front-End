@@ -41,7 +41,7 @@ const DefaultView = (props) => {
         >
           {currentStyle.photos.map((photoObj, index) => (
             <SwiperSlide key={index} className="thumbnail-slide">
-              <img className="thumbnail-pic" src={photoObj.thumbnail_url || 'no-photo.png'} alt={`Slide ${index}`} />
+              <img className="thumbnail-pic" src={photoObj.thumbnail_url || 'assets/no-photo.png'} alt={`Slide ${index}`} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -62,7 +62,7 @@ const DefaultView = (props) => {
           {currentStyle.photos.map((photoObj, index) => (
             <SwiperSlide key={index} className={photoObj.url ? '' : 'slider-no-img'}>
               <button type="button" className={photoObj.url ? 'slide-btn' : 'slide-btn-disabled'} onClick={() => handleImgClick(photoObj.url)}>
-                <img className={photoObj.url ? 'slider-pic' : ''} src={photoObj.url || 'no-photo.png'} alt={`Slide ${index}`} />
+                <img className={photoObj.url ? 'slider-pic' : ''} src={photoObj.url || 'assets/no-photo.png'} alt={`Slide ${index}`} />
               </button>
             </SwiperSlide>
           ))}
