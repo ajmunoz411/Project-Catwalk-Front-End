@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import regeneratorRuntime from 'regenerator-runtime';
 import AnswerEntry from './AnswerEntry';
 import NewAnswer from './NewAnswer';
 
@@ -41,7 +40,6 @@ const QuestionList = ({ question, product }) => {
   useEffect(async () => {
     await axios.get(`/api/qa/questions/${question.question_id}/answers`)
       .then((response) => {
-        // console.log('answers', response.data);
         setAnswers({
           results: response.data.results.slice(0, 2),
           moreAnswers: response.data.results.slice(2),
@@ -64,7 +62,8 @@ const QuestionList = ({ question, product }) => {
                   handleQuestionHelpfulness(question.question_id, qHelpful);
                   setqHelpful(qHelpful + 1);
                   setqClick(true);
-                }}>
+                }}
+                >
                   Yes
                 </u>({qHelpful})
               </span>
@@ -76,7 +75,8 @@ const QuestionList = ({ question, product }) => {
             <u onClick={() => {
               handleQuestionReport(question.question_id, qReported);
               setqReported(true);
-            }}>
+            }}
+            >
               Report
             </u>
           ) : (

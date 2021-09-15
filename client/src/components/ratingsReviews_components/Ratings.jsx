@@ -3,9 +3,11 @@ import Rating from 'react-rating';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Characteristics from './Characteristics';
 
-
 const Ratings = (props) => {
-  const { rating, metaData, setReviews, sortedReviews, count } = props;
+  const {
+    rating, metaData, setReviews, sortedReviews, count,
+  } = props;
+
   const [totalRatings, setTotalRatings] = useState(0);
   const [starFilters, setStarFilters] = useState([]);
 
@@ -44,7 +46,6 @@ const Ratings = (props) => {
 
   const findTotalRatings = () => {
     if (metaData.ratings) {
-      // const arrRatings = Object.values(metaData.ratings);
       let sumRatings = null;
       // eslint-disable-next-line no-restricted-syntax
       for (const key in metaData.ratings) {
@@ -58,7 +59,6 @@ const Ratings = (props) => {
     }
   };
 
-  // // works but 1 click behind due to async
   const ratingSort = (numStar) => {
     if (starFilters.includes(numStar)) {
       setStarFilters(starFilters.filter((star) => star !== numStar));
@@ -96,13 +96,6 @@ const Ratings = (props) => {
     return null;
   };
 
-  // refactor later~~~
-  // const allProgressBars = () => {
-  //   for (let i = 5; i > 0; i--) {
-  //     progressbars(i);
-  //   }
-  // };
-
   return (
     <div className="ratingsInner-container">
       <div className="ratings-header">
@@ -123,7 +116,6 @@ const Ratings = (props) => {
       <div className="ratingbreakdown">
         Rating Breakdown
         <div>
-          {/* {allProgressBars()} */}
           {progressbars(5)}
           {progressbars(4)}
           {progressbars(3)}

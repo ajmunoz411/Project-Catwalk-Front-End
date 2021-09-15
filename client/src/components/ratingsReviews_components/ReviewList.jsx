@@ -49,7 +49,6 @@ const ReviewList = (props) => {
       .catch((err) => {
         console.log('addHelpful: ', err);
       });
-    // }
   };
   const reportReview = () => {
     axios.put(`/api/reviews2/${review_id}/report`)
@@ -96,7 +95,6 @@ const ReviewList = (props) => {
         <div>
           {reviewer_name}
           {' '}
-          {/* ✓Verfied Purchaser(need to check email?) */}
         </div>
       </div>
       {showResponse()}

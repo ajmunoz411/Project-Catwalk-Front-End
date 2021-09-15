@@ -10,7 +10,6 @@ const AddPhotos = ({ submission, setSubmission }) => {
   const [notValidPhoto, setNotValidPhoto] = useState(null);
 
   const handleChange = (eventInput) => {
-    // console.log(eventInput.target.value);
     setPhotosObj(eventInput.target.value);
   };
   const handleSubmit = () => {
@@ -110,5 +109,3 @@ const AddPhotos = ({ submission, setSubmission }) => {
 };
 
 export default AddPhotos;
-
-// photos= [{id: 1234, url: 'somelink.com'}];

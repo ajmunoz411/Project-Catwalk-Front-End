@@ -19,10 +19,9 @@ export default class SizeDropDown extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { options, active } = this.state;
+    const { active } = this.state;
     const {
       currentStyle,
-      size,
       setSize,
       showAlert,
       setShowCartBtn,
@@ -89,7 +88,7 @@ export default class SizeDropDown extends Component {
 
   render() {
     const { options, active, menuIsOpen } = this.state;
-    const { currentStyle, size } = this.props;
+    const { size } = this.props;
 
     const customStyles = {
       dropdownIndicator: (provided, state) => ({

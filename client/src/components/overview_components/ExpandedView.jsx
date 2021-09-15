@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import SwiperCore, {
   Navigation,
   Pagination,
@@ -38,12 +38,6 @@ const ExpandedView = (props) => {
             maxRatio: 2.5,
             toggle: true,
           }}
-          // onZoomChange={(swiper, scale, imageEl, slideEl) => {
-          //   console.log(swiper);
-          //   console.log(scale);
-          //   console.log(imageEl);
-          //   console.log(slideEl);
-          // }}
           onSwiper={setExpandedSwiper}
           controller={{ control: mainSwiper }}
           className="expanded-swiper"
