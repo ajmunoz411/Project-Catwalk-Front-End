@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const Image = (props) => {
   const { photos, handleClick, item } = props;
-  const [imgUrl, setImgUrl] = useState('no-photo.png');
+  const [imgUrl, setImgUrl] = useState('assets/no-photo.png');
 
   useEffect(() => {
     if (photos && (photos.length > 0)) {

@@ -26,6 +26,7 @@ const RelatedItemEntry = (props) => {
       setDefaultStyle(results);
     }));
     getRating(itemId, ((results) => {
+      console.log('results', results);
       setRating(results);
     }));
   }, [relatedItem]);
