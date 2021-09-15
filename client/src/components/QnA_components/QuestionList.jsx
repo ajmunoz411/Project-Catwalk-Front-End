@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import regeneratorRuntime from 'regenerator-runtime';
 import AnswerEntry from './AnswerEntry';
 import NewAnswer from './NewAnswer';
 

@@ -57,7 +57,7 @@ class App extends React.Component {
         currentItem: stored,
       });
     } else {
-      axios.get('/api/products/16060')
+      axios.get('/api/products/42369')
         .then((res) => {
           this.setState({
             currentItem: res.data,

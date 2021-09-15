@@ -1,7 +1,6 @@
 .answerListScroll {
   max-height: 25vh;
   overflow: auto;
-  /* height: 18vh; */
 }
 
 .qna-wrapper {
@@ -20,7 +19,6 @@
 .questionList {
   max-height: 50vh;
   overflow: auto;
-  /* height: 88vh; */
 }
 
 u:hover {
@@ -31,11 +29,6 @@ u:hover {
 .addAnswer {
   float: right;
 }
-
-/* .form {
-  display: flex;
-  flex-direction: row;
-} */
 
 .search-field {
   width: 100%;
