@@ -34,13 +34,13 @@ const QuestionsAnswers = ({ currentItem }) => {
   };
 
   const filterQuestions = questions.results.filter((question) => {
-    const lowerCase = question.question_body.toLowerCase();
-    return lowerCase.includes(search.toLowerCase());
+    return question.question_body.toLowerCase().includes(search.toLowerCase())
   });
 
   useEffect(() => {
     axios.get(`${URL}/?product_id=${currentItem.id}&count=100`, AUTH)
       .then((response) => {
+        // console.log(response.data);
         setQuestions({
           results: response.data.results.slice(0, 4),
           moreQuestions: response.data.results.slice(4),
