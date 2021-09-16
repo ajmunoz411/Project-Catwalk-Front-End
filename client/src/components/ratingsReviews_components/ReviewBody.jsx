@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Modal, Button, Col, Row, Form, InputGroup, FormControl, Container,
+  Col, Form, InputGroup, FormControl,
 } from 'react-bootstrap';
 
 const ReviewBody = ({ submission, handleChange }) => {

@@ -3,7 +3,6 @@ import {
   ProgressBar, Container, Row, Col, Form,
 } from 'react-bootstrap';
 
-
 const Characteristics = (props) => {
   const { characteristic, objValue } = props;
   const now = (objValue[characteristic].value / 5) * 100;

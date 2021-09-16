@@ -29,18 +29,21 @@ const ReviewList = (props) => {
     }
     return null;
   };
+
   const formatDate = () => {
     const entireDate = new Date(date).toString();
     return (
       `${entireDate.slice(4, 10)},${entireDate.slice(10, 16)}`
     );
   };
+
   const showRecommendation =
     (recommend ? (
       <div>
         ✓ I recommend this product!
       </div>
     ) : null);
+
   const addHelpful = () => {
     axios.put(`/api/reviews2/${review_id}/helpful`)
       .then(() => {
@@ -49,8 +52,8 @@ const ReviewList = (props) => {
       .catch((err) => {
         console.log('addHelpful: ', err);
       });
-    // }
   };
+
   const reportReview = () => {
     axios.put(`/api/reviews2/${review_id}/report`)
       .then(() => {
@@ -60,6 +63,7 @@ const ReviewList = (props) => {
         console.log('reportReview', err);
       });
   };
+
   const showPhotos = () => {
     if (photos.length > 0) {
       return (
@@ -96,7 +100,6 @@ const ReviewList = (props) => {
         <div>
           {reviewer_name}
           {' '}
-          {/* ✓Verfied Purchaser(need to check email?) */}
         </div>
       </div>
       {showResponse()}

@@ -4,7 +4,9 @@ import {
   Modal, Button, Form, InputGroup,
 } from 'react-bootstrap';
 
-const NewAnswer = ({ show, onHide, question, product }) => {
+const NewAnswer = ({
+  show, onHide, question, product,
+}) => {
   const [modalAnswer, setModalAnswer] = useState({
     body: '',
     name: '',
@@ -31,8 +33,10 @@ const NewAnswer = ({ show, onHide, question, product }) => {
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
         <Modal.Title>
-          Submit You Answer
-          <Modal.Title>[{product.name}] [{question.question_body}]</Modal.Title>
+          Submit Your Answer
+          <Modal.Title>
+            {`[${product.name}] ${question.question_body}`}
+          </Modal.Title>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
