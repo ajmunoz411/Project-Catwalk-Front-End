@@ -57,7 +57,7 @@ class App extends React.Component {
         currentItem: stored,
       });
     } else {
-      axios.get('/api/products/42378')
+      axios.get('/api/products/42392')
         .then((res) => {
           this.setState({
             currentItem: res.data,
@@ -85,10 +85,10 @@ class App extends React.Component {
       count += val;
       sumproduct += (key * val);
     });
-    console.log('ratingsObj', ratingsObj);
+    // console.log('ratingsObj', ratingsObj);
     const avgRating = sumproduct / count;
     const roundedRating = Number((Math.round(avgRating * 4) / 4).toFixed(2));
-    console.log('roundedRating', roundedRating);
+    // console.log('roundedRating', roundedRating);
     if (cb) {
       cb(roundedRating);
     } else {
