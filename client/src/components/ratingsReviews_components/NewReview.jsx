@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Modal, Button, Col, Row, Form, InputGroup, FormControl, Container,
+  Modal, Button, Col, Form, InputGroup, FormControl,
 } from 'react-bootstrap';
 import Rating from 'react-rating';
 import axios from 'axios';
@@ -147,7 +147,6 @@ const NewReview = (props) => {
   };
 
   const handleSubmit = (e) => {
-    // console.log(submission);
     e.preventDefault();
     const errStatement = 'You must enter the following:';
     if (submission.rating === 0) {
@@ -174,7 +173,6 @@ const NewReview = (props) => {
             photos: [],
             characteristics: {},
           });
-          // console.log('success in posting!');
         })
         .catch((err) => {
           console.log('postReview Err', err);

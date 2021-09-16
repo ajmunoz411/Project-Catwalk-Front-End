@@ -30,7 +30,7 @@ const QuestionList = ({ question, product }) => {
       .catch((err) => console.error(err));
   };
 
-  const handleQuestionReport = (id) => {
+  const handleQuestionReport = () => {
     const report = {
       reported: true,
     };
@@ -38,10 +38,9 @@ const QuestionList = ({ question, product }) => {
       .catch((err) => console.error(err));
   };
 
-  useEffect(async () => {
-    await axios.get(`/api/qa/questions/${question.question_id}/answers`)
+  useEffect(() => {
+    axios.get(`/api/qa/questions/${question.question_id}/answers`)
       .then((response) => {
-        // console.log('answers', response.data);
         setAnswers({
           results: response.data.results.slice(0, 2),
           moreAnswers: response.data.results.slice(2),
@@ -52,6 +51,17 @@ const QuestionList = ({ question, product }) => {
       });
   }, []);
 
+  const handleHelpClick = () => {
+    handleQuestionHelpfulness(question.question_id, qHelpful);
+    setqHelpful(qHelpful + 1);
+    setqClick(true);
+  };
+
+  const handleReportClick = () => {
+    handleQuestionReport(question.question_id, qReported);
+    setqReported(true);
+  };
+
   return (
     <div>
       <div className="question">
@@ -60,11 +70,12 @@ const QuestionList = ({ question, product }) => {
           {!qClick ?
             (
               <span>
-                <u onClick={() => {
-                  handleQuestionHelpfulness(question.question_id, qHelpful);
-                  setqHelpful(qHelpful + 1);
-                  setqClick(true);
-                }}>
+                <u
+                  onClick={handleHelpClick}
+                  onKeyDown={handleHelpClick}
+                  role="button"
+                  tabIndex={-1}
+                >
                   Yes
                 </u>({qHelpful})
               </span>
@@ -73,10 +84,12 @@ const QuestionList = ({ question, product }) => {
           <span className="divider" />
           &nbsp;
           {!qReported ? (
-            <u onClick={() => {
-              handleQuestionReport(question.question_id, qReported);
-              setqReported(true);
-            }}>
+            <u
+              onClick={handleReportClick}
+              onKeyDown={handleReportClick}
+              role="button"
+              tabIndex={-2}
+            >
               Report
             </u>
           ) : (
@@ -85,7 +98,13 @@ const QuestionList = ({ question, product }) => {
           &nbsp;
           <span className="divider" />
           &nbsp;
-          <u onClick={() => setAnswerModal(true)}>Add Answer</u>
+          <u
+            onClick={() => setAnswerModal(true)}
+            onKeyDown={() => setAnswerModal(true)}
+            role="button"
+            tabIndex={-3}
+          >Add Answer
+          </u>
           <NewAnswer
             show={answerModal}
             onHide={() => setAnswerModal(false)}
@@ -112,7 +131,6 @@ const QuestionList = ({ question, product }) => {
           ) :
           (null)}
       </div>
-      {/* <hr /> */}
     </div>
   );
 };

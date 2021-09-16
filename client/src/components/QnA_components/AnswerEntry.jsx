@@ -11,17 +11,29 @@ const AnswerEntry = ({ answer }) => {
       updateHelpful: help + 1,
     };
     axios.put(`/api/qa/answers/${answer.answer_id}/helpful`, updateHelpful)
-      // .then(() => axios.get(`/api/qa/questions/${question.question_id}/answers`))
       .catch((err) => console.error(err));
   };
 
-  const handleAnswerReport = (id) => {
+  const handleAnswerReport = () => {
     const report = {
       reported: true,
     };
     axios.put(`/api/qa/answers/${answer.answer_id}/report`, report)
       .catch((err) => console.error(err));
   };
+
+  const handleHelpfulClick = () => {
+    handleHelpfulness();
+    setHelpful(helpful + 1);
+    setClick(true);
+  };
+
+  const handleReportClick = () => {
+    handleAnswerReport(answer.answer_id, reported);
+    setReported(true);
+  };
+
+  const date = new Date(answer.date).toString().slice(4, 16);
 
   return (
     <div>
@@ -30,40 +42,37 @@ const AnswerEntry = ({ answer }) => {
         {answer.body}
       </div>
       <div className="userContainer">
-        <span className="text-muted">{answer.answerer_name}</span>
-        ,
-        &nbsp;
-        <span className="text-muted">{new Date(answer.date).toString().slice(4, 16)}</span>
-        <span className="divider" />
-        &nbsp;
+        <span className="text-muted">{`${answer.answerer_name}, `}</span>
+        <span className="text-muted">{`${date} | `}</span>
         {!click ? (
-          <span onClick={() => {
-            handleHelpfulness(answer.answer_id, helpful);
-            setHelpful(helpful + 1);
-            setClick(true);
-          }}>
-            Helpful? <u>Yes</u>(
-            {helpful}
-            )
-            &nbsp;
+          <span
+            onClick={handleHelpfulClick}
+            onKeyDown={handleHelpfulClick}
+            role="button"
+            tabIndex={0}
+          >
+            {'Helpful? '}
+            <u>Yes</u>
+            {`(${helpful}) `}
           </span>
         ) : (
           <span>
-            Helpful? <u>Yes</u>(
-            {helpful}
-            )
-            &nbsp;
+            {'Helpful? '}
+            <u>Yes</u>
+            {`(${helpful}) `}
           </span>
         )}
         <span className="divider" />
         &nbsp;
         {!reported ? (
-        <u onClick={() => {
-          handleAnswerReport(answer.answer_id, reported);
-          setReported(true);
-        }}>
+          <u
+            onClick={handleReportClick}
+            onKeyDown={handleReportClick}
+            role="button"
+            tabIndex={-1}
+          >
             Report
-        </u>
+          </u>
         ) : (
           <span>Reported</span>
         )}

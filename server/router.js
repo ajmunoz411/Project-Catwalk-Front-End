@@ -1,38 +1,27 @@
 const router = require('express').Router();
-const atelier = require('../helpers/atelier');
+const products = require('../controllers/products');
+const questions = require('../controllers/questions');
+const reviews = require('../controllers/reviews');
 
-router.get('/products', atelier.getProducts);
+router
+  .get('/products', products.getProducts)
+  .get('/products/:id', products.getOneProduct)
+  .get('/products/:id/styles', products.getProductStyles)
+  .get('/related/:id', products.getRelatedItems)
 
-router.get('/qa/questions', atelier.getQuestions);
+  .get('/qa/questions', questions.getQuestions)
+  .get('/qa/questions/:question_id/answers', questions.getAnswersByQuestionId)
+  .put('/qa/answers/:answer_id/helpful', questions.updateHelpfulAnswer)
+  .put('/qa/answers/:answer_id/report', questions.reportAnswers)
+  .put('/qa/questions/:question_id/helpful', questions.updateHelpfulQuestion)
+  .put('/qa/questions/:question_id/report', questions.reportQuestion)
+  .post('/qa/questions/:question_id/answers', questions.postAnswer)
+  .post('/qa/questions', questions.postQuestion)
 
-router.get('/products/:id/styles', atelier.getProductStyles);
-
-router.get('/reviews2/:id/:count/:sort', atelier.getReviews);
-
-router.put('/reviews2/:id/helpful', atelier.updateHelpfulReview);
-
-router.put('/reviews2/:id/report', atelier.reportReview);
-
-router.post('/reviews2/postReview', atelier.postReview);
-
-router.get('/reviews/meta/:id', atelier.getReviewMetadata);
-
-router.get('/related/:id', atelier.getRelatedItems);
-
-router.get('/products/:id', atelier.getOneProduct);
-
-router.get('/qa/questions/:question_id/answers', atelier.getAnswersByQuestionId);
-
-router.put('/qa/answers/:answer_id/helpful', atelier.updateHelpfulAnswer);
-
-router.put('/qa/answers/:answer_id/report', atelier.reportAnswers);
-
-router.put('/qa/questions/:question_id/helpful', atelier.updateHelpfulQuestion);
-
-router.post('/qa/questions/:question_id/answers', atelier.postAnswer);
-
-router.post('/qa/questions', atelier.postQuestion);
-
-router.put('/qa/questions/:question_id/report', atelier.reportQuestion);
+  .get('/reviews2/:id/:count/:sort', reviews.getReviews)
+  .get('/reviews/meta/:id', reviews.getReviewMetadata)
+  .put('/reviews2/:id/helpful', reviews.updateHelpfulReview)
+  .put('/reviews2/:id/report', reviews.reportReview)
+  .post('/reviews2/postReview', reviews.postReview);
 
 module.exports = router;

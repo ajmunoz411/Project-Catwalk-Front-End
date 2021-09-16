@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -27,7 +28,6 @@ const RatingsReviews = (props) => {
   const handleSortReviews = async () => {
     const sortedReviewsResults = await axios.get(`/api/reviews2/${id}/100/${sortState}`);
     const allNewSortReviews = sortedReviewsResults.data.results;
-    // eslint-disable-next-line max-len
     const starFilteredReviews = allNewSortReviews.filter((review) => starFilters.indexOf(review.rating) > -1);
     if (starFilters.length > 0) {
       setReviews(starFilteredReviews.slice(0, count));
@@ -76,6 +76,7 @@ const RatingsReviews = (props) => {
       setStarFilters(starFilters.filter((star) => star !== starInput));
     }
   };
+
   const handleClear = () => {
     setStarFilters([]);
     setOldState({

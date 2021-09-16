@@ -83,13 +83,6 @@ const Ratings = (props) => {
     return null;
   };
 
-  // refactor later~~~
-  // const allProgressBars = () => {
-  //   for (let i = 5; i > 0; i--) {
-  //     progressbars(i);
-  //   }
-  // };
-
   return (
     <div className="ratingsInner-container">
       <div className="ratings-header">
@@ -110,7 +103,6 @@ const Ratings = (props) => {
       <div className="ratingbreakdown">
         Rating Breakdown
         <div>
-          {/* {allProgressBars()} */}
           {progressbars(5)}
           {progressbars(4)}
           {progressbars(3)}

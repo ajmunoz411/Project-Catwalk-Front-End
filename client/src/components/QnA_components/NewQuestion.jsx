@@ -24,7 +24,9 @@ const NewQuestion = ({ show, onHide, product }) => {
   };
 
   const handleChange = (e) => {
-    setModalQuestion({ ...modalQuestion, [e.target.name]: e.target.value }, console.log(modalQuestion));
+    setModalQuestion(
+      { ...modalQuestion, [e.target.name]: e.target.value }, console.log(modalQuestion),
+    );
   };
 
   return (
@@ -32,7 +34,7 @@ const NewQuestion = ({ show, onHide, product }) => {
       <Modal.Header closeButton>
         <Modal.Title>
           Ask Your Question
-          <Modal.Title>About [{product.name}]</Modal.Title>
+          <Modal.Title>{`About [${product.name}]`}</Modal.Title>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
