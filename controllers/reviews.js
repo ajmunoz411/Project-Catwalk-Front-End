@@ -4,6 +4,7 @@ const config = require('../config');
 const reviews = {
   getReviews: (req, res) => {
     const { id, count, sort } = req.params;
+
     const options = {
       method: 'get',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews?product_id=${id}&count=${count}&sort=${sort}`,
@@ -24,6 +25,7 @@ const reviews = {
 
   updateHelpfulReview: (req, res) => {
     const { id } = req.params;
+
     const options = {
       method: 'put',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/${id}/helpful`,
@@ -44,6 +46,7 @@ const reviews = {
 
   reportReview: (req, res) => {
     const { id } = req.params;
+
     const options = {
       method: 'put',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/${id}/report`,

@@ -10,7 +10,7 @@ const PhotoGallery = (props) => {
   const [mainSwiper, setMainSwiper] = useState();
   const [thumbsSwiper, setThumbsSwiper] = useState();
   const [expandedSwiper, setExpandedSwiper] = useState();
-
+  console.log('currentStyles', currentStyle);
   const slideTo = () => {
     mainSwiper.slideTo(mainIndex);
   };
